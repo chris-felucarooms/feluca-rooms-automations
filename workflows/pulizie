@@ -1,0 +1,170 @@
+📄 01-trigger.md
+Trigger del Workflow Pulizie
+Il workflow si attiva quando:
+
+il workflow Check‑out crea un ticket pulizie
+
+oppure viene creato un record “Pulizie richieste” nel database
+
+oppure il team pulizie segnala disponibilità per un nuovo intervento
+
+Campi richiesti:
+
+Stanza
+
+Indirizzo
+
+Tipo pulizia (post check‑out / straordinaria / semestrale)
+
+Foto check‑out (se disponibili)
+
+Priorità
+
+📄 02-assegnazione-team.md
+Assegnazione Team Pulizie
+Logica:
+
+Team A → appartamenti zona centro
+
+Team B → zona ospedale
+
+Team C → straordinarie / emergenze
+
+Messaggio interno:
+
+“Nuovo intervento pulizie assegnato a [Team]. Stanza [X], [Indirizzo].”
+
+📄 03-invio-dettagli-pulizie.md
+Invio Dettagli al Team Pulizie
+Contenuto inviato:
+
+Indirizzo
+
+Stanza
+
+Tipo pulizia
+
+Foto check‑out
+
+Note del check‑out
+
+Priorità
+
+📄 04-programmazione-intervento.md
+Programmazione Intervento
+Il team comunica:
+
+data
+
+ora
+
+eventuali materiali necessari
+
+Il sistema aggiorna il ticket.
+
+📄 05-notifica-inquilino-successivo.md
+Notifica all’Inquilino Successivo (se già assegnato)
+“The room is being cleaned today. I’ll notify you as soon as it’s ready.”
+
+📄 06-foto-prima.md
+Foto Prima dell’Intervento
+Il team pulizie invia:
+
+foto condizioni iniziali
+
+eventuali anomalie
+
+Il sistema le archivia automaticamente.
+
+📄 07-intervento-pulizie.md
+Esecuzione Pulizie
+Azioni:
+
+Pulizia completa stanza
+
+Pulizia bagno (se privato)
+
+Pulizia aree comuni (se previste)
+
+Cambio biancheria (se previsto)
+
+Segnalazione eventuali danni
+
+📄 08-foto-dopo.md
+Foto Dopo l’Intervento
+Il team invia:
+
+foto stanza pulita
+
+foto bagno
+
+foto eventuali riparazioni necessarie
+
+Il sistema le archivia.
+
+📄 09-valutazione-danni.md
+Valutazione Danni Riscontrati dal Team Pulizie
+Se vengono individuati danni:
+
+creare ticket manutenzione
+
+allegare foto
+
+classificare priorità
+
+📄 10-aggiornamento-stato-stanza.md
+Aggiornamento Stato Stanza
+Logica:
+
+Dopo pulizie → “Disponibile”
+
+Se danni → “In manutenzione”
+
+Se pulizie semestrali → “Completato”
+
+📄 11-notifica-stanza-pronta.md
+Notifica Stanza Pronta
+Se c’è un nuovo inquilino assegnato:
+
+“Your room is now ready. You can check in at the scheduled time.”
+
+📄 12-archiviazione.md
+Archiviazione Documenti Pulizie
+Azioni:
+
+Salvare foto prima/dopo
+
+Salvare note del team
+
+Salvare eventuali ticket manutenzione
+
+Archiviare nella cartella stanza/anno:
+
+Codice
+Stanza X / 2025-2026 / Pulizie / YYYY-MM-DD
+📄 13-pulizie-completate.md
+Chiusura Workflow
+Azioni:
+
+Ticket pulizie → “Chiuso”
+
+Nessuna azione pendente
+
+Workflow terminato
+
+📄 diagramma-pulizie.md
+Diagramma Logico Workflow Pulizie
+Codice
+Trigger →
+   Assegnazione team →
+   Invio dettagli →
+   Programmazione →
+   Foto prima →
+   Pulizie →
+   Foto dopo →
+   Valutazione danni →
+      Se danni → ticket manutenzione
+   Aggiornamento stato stanza →
+   Notifica stanza pronta →
+   Archiviazione →
+   Pulizie completate
