@@ -1,0 +1,169 @@
+📄 01-trigger.md
+Trigger del Workflow Sicurezza Accessi
+Il workflow si attiva quando:
+
+viene creato un nuovo codice smart (da check‑in)
+
+un codice sta per scadere (da check‑out)
+
+viene rilevata un’anomalia di accesso
+
+l’inquilino richiede un nuovo codice
+
+la centralina invia un log di accesso
+
+📄 02-generazione-codice.md
+Generazione Codice Smart
+Azioni:
+
+Creare codice temporaneo
+
+Validità: data/ora check‑in → data/ora check‑out
+
+Associare codice a stanza e inquilino
+
+Salvare nel database
+
+📄 03-invio-codice.md
+Invio Codice all’Inquilino
+“Your personal access code is [codice]. It will activate automatically at your check‑in time.”
+
+📄 04-attivazione-codice.md
+Attivazione Automatica
+Azioni:
+
+Attivare codice alla data/ora prevista
+
+Registrare log
+
+Notificare l’inquilino
+
+📄 05-scadenza-automatica.md
+Scadenza Automatica del Codice
+Azioni:
+
+Nessuna disattivazione manuale
+
+Il codice scade automaticamente
+
+Registrare log: “Codice scaduto automaticamente”
+
+📄 06-rigenerazione-codice.md
+Rigenerazione Codice (su richiesta)
+Trigger:
+
+Inquilino perde il codice
+
+Codice non funziona
+
+Accesso negato
+
+Azioni:
+
+Generare nuovo codice
+
+Inviare all’inquilino
+
+Registrare log
+
+📄 07-log-accessi.md
+Registrazione Log Accessi
+Dati registrati:
+
+Data/ora
+
+Stanza
+
+Codice utilizzato
+
+Esito (successo / fallito)
+
+Tipo accesso (porta principale / stanza)
+
+📄 08-rilevamento-anomalie.md
+Rilevamento Anomalie
+Anomalie rilevate:
+
+Tentativi falliti ripetuti
+
+Accesso fuori orario
+
+Accesso con codice scaduto
+
+Accesso da utente non associato
+
+Azioni:
+
+Creare alert interno
+
+Notificare amministratore
+
+📄 09-notifica-anomalia.md
+Notifica Interna
+“Anomaly detected in Room [X]: [descrizione]. Please verify.”
+
+📄 10-blocco-codice.md
+Blocco Codice (solo in caso di rischio)
+Azioni:
+
+Disattivare codice
+
+Generare nuovo codice
+
+Notificare inquilino
+
+Registrare log
+
+📄 11-report-mensile.md
+Report Mensile Accessi
+Contenuto:
+
+Numero accessi
+
+Tentativi falliti
+
+Anomalie
+
+Codici rigenerati
+
+Codici scaduti
+
+Salvato in:
+
+Codice
+/Stanza X/2025-2026/Log Accessi/
+📄 12-archiviazione.md
+Archiviazione Log Accessi
+Azioni:
+
+Salvare log mensili
+
+Salvare anomalie
+
+Salvare rigenerazioni
+
+Archiviare per stanza/anno
+
+📄 13-sicurezza-completata.md
+Chiusura Workflow
+Azioni:
+
+Workflow → “Completato”
+
+Nessuna azione pendente
+
+📄 diagramma-sicurezza-accessi.md
+Diagramma Logico
+Codice
+Trigger →
+   Generazione codice →
+   Invio codice →
+   Attivazione →
+   Log accessi →
+   Rilevamento anomalie →
+      Se anomalia → notifica + blocco codice
+   Scadenza automatica →
+   Rigenerazione (se richiesta) →
+   Report mensile →
+   Archiviazione →
+   Sicurezza completata
