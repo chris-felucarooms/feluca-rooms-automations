@@ -1,0 +1,191 @@
+📄 01-trigger.md
+Trigger del Workflow Check‑out Automatizzato
+Il workflow si attiva quando:
+
+la data corrente è 7 giorni prima del check‑out programmato
+oppure
+
+viene creato un record “Check‑out programmato” nel database
+
+Campi richiesti:
+
+Nome inquilino
+
+Stanza
+
+Indirizzo
+
+Data check‑out
+
+Ora check‑out
+
+Tipo accesso (smart / chiavi)
+
+Numero WhatsApp
+
+📄 02-reminder-7-giorni.md
+Reminder 7 Giorni Prima del Check‑out
+Messaggio:
+
+“Hi! This is a reminder that your check‑out is scheduled for [date] before 10:00 AM. I will send you the check‑out instructions closer to the date.”
+
+📄 03-reminder-24-ore.md
+Reminder 24 Ore Prima del Check‑out
+Messaggio:
+
+“Reminder: your check‑out is tomorrow before 10:00 AM. Please follow the instructions I will send you shortly.”
+
+📄 04-invio-istruzioni-check-out.md
+Invio Istruzioni Check‑out
+Template utilizzato: check-out-instructions.md dal repository feluca-rooms-templates.
+
+Messaggio aggiuntivo:
+
+“Please remember to leave the keys on the desk (if applicable) and send a message when you leave.”
+
+📄 05-conferma-scadenza-codice.md
+Conferma Scadenza Codice Smart (solo se accesso smart)
+Azioni:
+
+Nessuna disattivazione manuale necessaria
+
+Il codice scade automaticamente alla data/ora impostata
+
+Registrare nel log:
+Codice smart → scadenza automatica confermata
+
+Messaggio all’inquilino:
+
+“Your access code will automatically expire after your check‑out time. No action is required.”
+
+📄 06-conferma-uscita.md
+Conferma Uscita dell’Inquilino
+Logica:
+Il sistema attende:
+
+messaggio dell’inquilino
+oppure
+
+log della centralina (porta aperta → uscita)
+
+Se nessuna conferma entro 2 ore:
+
+“Hi! Did you already leave the room? Please confirm so we can proceed with the cleaning.”
+
+📄 07-raccolta-foto-check-out.md
+Raccolta Foto Check‑out
+Azioni:
+
+Richiedere foto della stanza (se l’inquilino è collaborativo)
+
+Altrimenti → foto verranno fatte dal team pulizie
+
+Messaggio:
+
+“If possible, please send a quick photo of the room before leaving.”
+
+📄 08-valutazione-danni.md
+Valutazione Danni
+Azioni:
+
+Confronto foto check‑in vs check‑out
+
+Identificazione danni
+
+Classificazione:
+
+Nessun danno
+
+Danno lieve
+
+Danno grave
+
+Output:
+
+Se danno → aprire ticket manutenzione
+
+Se nessun danno → procedere
+
+📄 09-creazione-ticket-pulizie.md
+Creazione Ticket Pulizie
+Azioni:
+
+Creare ticket per pulizie post‑check‑out
+
+Inviare foto (se disponibili)
+
+Inviare note (odore, sporco, condizioni)
+
+Assegnare al team pulizie
+
+Messaggio interno:
+
+“Pulizie post‑check‑out richieste per Stanza [X], [Indirizzo].”
+
+📄 10-creazione-ticket-manutenzione.md
+Creazione Ticket Manutenzione (se necessario)
+Azioni:
+
+Creare ticket
+
+Allegare foto danni
+
+Classificare priorità
+
+Assegnare tecnico
+
+Messaggio interno:
+
+“Manutenzione necessaria per Stanza [X]. Tipo danno: [descrizione].”
+
+📄 11-archiviazione-documenti.md
+Archiviazione Documenti Check‑out
+Azioni:
+
+Salvare foto check‑out
+
+Salvare log accesso
+
+Salvare ticket pulizie
+
+Salvare ticket manutenzione
+
+Aggiornare cartella stanza/anno
+
+📄 12-aggiornamento-stato-stanza.md
+Aggiornamento Stato Stanza
+Azioni:
+
+Stato stanza → “In pulizia”
+
+Dopo pulizie → “Disponibile”
+
+Dopo manutenzione → “Pronta per nuovo check‑in”
+
+📄 13-check-out-completato.md
+Chiusura Workflow Check‑out
+Azioni:
+
+Aggiornare record inquilino → “Check‑out completato”
+
+Chiudere workflow
+
+Nessuna azione pendente
+
+📄 diagramma-check-out.md
+Diagramma Logico del Workflow Check‑out Automatizzato
+Codice
+7 giorni prima →
+   Reminder →
+24 ore prima →
+   Reminder →
+Invio istruzioni →
+Conferma scadenza codice smart →
+Conferma uscita →
+Richiesta foto →
+Valutazione danni →
+   Se danni → ticket manutenzione
+Creazione ticket pulizie →
+Archiviazione →
+Aggiornamento stato stanza →
+Check‑out completato
