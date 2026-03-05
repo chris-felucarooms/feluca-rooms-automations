@@ -1,0 +1,228 @@
+📄 01-obiettivo-automazioni.md
+Obiettivo del Modulo
+Le automazioni trasversali servono a:
+
+collegare i workflow tra loro
+
+evitare errori umani
+
+mantenere aggiornati i dati in tempo reale
+
+generare alert quando qualcosa non va
+
+sincronizzare stato stanze, ticket, accessi, pulizie
+
+garantire continuità operativa
+
+📄 02-alert-operativi.md
+Alert Operativi Automatici
+Il sistema genera alert quando:
+
+una stanza resta “In pulizia” per più di X ore
+
+un ticket manutenzione alta priorità non viene preso in carico
+
+un check‑in è imminente e mancano foto check‑out
+
+un check‑out è imminente e mancano istruzioni inviate
+
+un codice smart non si attiva correttamente
+
+un’anomalia accessi non viene gestita
+
+Ogni alert include:
+
+stanza
+
+tipo problema
+
+priorità
+
+azione richiesta
+
+📄 03-reminder-automatici.md
+Reminder Automatici
+Il sistema invia reminder a:
+
+tecnici (ticket aperti)
+
+team pulizie (interventi programmati)
+
+amministratore (anomalie accessi)
+
+inquilini (check‑in, check‑out, documenti mancanti)
+
+Frequenza:
+
+alta priorità → ogni 1 ora
+
+media priorità → ogni 4 ore
+
+bassa priorità → ogni 24 ore
+
+📄 04-controllo-coerenza-dati.md
+Controllo Coerenza Dati
+Il sistema verifica:
+
+che ogni stanza abbia un solo inquilino attivo
+
+che le date check‑in/check‑out non si sovrappongano
+
+che i ticket manutenzione siano associati alla stanza corretta
+
+che le pulizie post check‑out siano state create
+
+che i codici smart abbiano data di scadenza coerente
+
+Se trova errori → crea un alert.
+
+📄 05-sincronizzazione-stato-stanze.md
+Sincronizzazione Stato Stanze
+Lo stato stanza viene aggiornato automaticamente quando:
+
+check‑in completato → “Occupata”
+
+check‑out completato → “In pulizia”
+
+pulizie completate → “Disponibile”
+
+manutenzione aperta → “In manutenzione”
+
+manutenzione completata → “Disponibile”
+
+📄 06-sincronizzazione-ticket.md
+Sincronizzazione Ticket
+Il sistema collega:
+
+ticket manutenzione ↔ dashboard
+
+ticket pulizie ↔ check‑out
+
+ticket manutenzione ↔ sicurezza accessi (se anomalie)
+
+Ogni aggiornamento viene propagato ai moduli collegati.
+
+📄 07-monitoraggio-scadenze.md
+Monitoraggio Scadenze
+Il sistema controlla:
+
+scadenze contratti
+
+scadenze codici smart
+
+scadenze pulizie semestrali
+
+scadenze manutenzione programmata
+
+E genera task automatici.
+
+📄 08-escalation-automatica.md
+Escalation Automatica
+Se un problema non viene risolto entro un tempo definito:
+
+priorità aumenta
+
+viene notificato un responsabile superiore
+
+viene creato un alert critico
+
+Esempio:
+
+ticket alta priorità non preso in carico entro 1 ora → escalation
+
+anomalia accessi non gestita entro 30 minuti → escalation
+
+📄 09-log-sistema.md
+Log del Sistema
+Il sistema registra:
+
+ogni aggiornamento stato stanza
+
+ogni ticket creato/chiuso
+
+ogni alert generato
+
+ogni sincronizzazione
+
+ogni errore
+
+I log vengono archiviati mensilmente.
+
+📄 10-report-settimanale.md
+Report Settimanale Automatico
+Contiene:
+
+stanze disponibili
+
+stanze occupate
+
+ticket manutenzione aperti
+
+pulizie in corso
+
+anomalie accessi
+
+attività imminenti
+
+indicatori qualità
+
+📄 11-report-mensile.md
+Report Mensile Automatico
+Contiene:
+
+numero check‑in
+
+numero check‑out
+
+numero interventi manutenzione
+
+numero pulizie
+
+costi manutenzione (se tracciati)
+
+performance team pulizie
+
+performance tecnici
+
+anomalie accessi
+
+📄 12-archiviazione-automazioni.md
+Archiviazione Automazioni
+Il sistema salva:
+
+report settimanali
+
+report mensili
+
+log sistema
+
+alert critici
+
+In:
+
+Codice
+/Sistema/Automazioni/YYYY-MM/
+📄 13-automazioni-completate.md
+Chiusura Workflow
+automazioni sincronizzate
+
+alert attivi gestiti
+
+dashboard aggiornata
+
+nessuna azione pendente
+
+📄 diagramma-automazioni-trasversali.md
+Diagramma Logico
+Codice
+Trigger →
+   Alert operativi →
+   Reminder automatici →
+   Controllo coerenza →
+   Sincronizzazione stato stanze →
+   Sincronizzazione ticket →
+   Monitoraggio scadenze →
+   Escalation →
+   Report →
+   Archiviazione →
+   Automazioni completate
