@@ -1,0 +1,188 @@
+📄 01-trigger.md
+Trigger del Workflow Check‑in Automatizzato
+Il workflow si attiva quando viene creato un nuovo record “Tenant” nel database operativo.
+
+Campi richiesti:
+
+Nome inquilino
+
+Stanza
+
+Indirizzo
+
+Data check‑in
+
+Ora check‑in
+
+Data check‑out
+
+Numero WhatsApp
+
+Tipo accesso (smart / chiavi)
+
+Contratto firmato (sì/no)
+
+Output:
+
+Avvio del workflow
+
+Passaggio alla fase “Verifica contratto”
+
+📄 02-verifica-contratto.md
+Verifica Contratto Firmato
+Condizione:
+
+Se contratto = NO → inviare reminder firma e sospendere workflow.
+
+Se contratto = SÌ → procedere alla creazione del gruppo WhatsApp.
+
+Messaggio reminder:
+
+“Hi! Your contract is still pending signature. Please sign it to complete your booking.”
+
+📄 03-creazione-gruppo-whatsapp.md
+Creazione Gruppo WhatsApp
+Azioni:
+
+Creare gruppo WhatsApp
+
+Nome: Feluca Rooms – [Indirizzo] – Room [Numero]
+
+Aggiungere inquilino
+
+Aggiungere Feluca Rooms
+
+Messaggio automatico:
+
+“Welcome to Feluca Rooms! This is the official group for communication during your stay.”
+
+📄 04-messaggi-pre-arrivo.md
+Invio Messaggi Pre‑Arrivo
+Template inviati:
+
+Welcome message
+
+House rules
+
+Wi‑Fi instructions
+
+Waste collection
+
+Sequenza:
+
+Welcome
+
+House rules
+
+Wi‑Fi
+
+Waste collection
+
+📄 05-generazione-codice-smart.md
+Generazione Codice Smart Access
+Condizione: solo se tipo accesso = smart.
+
+Azioni:
+
+Chiamata API alla centralina
+
+Generazione codice personale
+
+Validità:
+
+Start: data check‑in + ora check‑in
+
+End: data check‑out + ora check‑out
+
+Salvataggio codice nel database
+
+📄 06-invio-codice-smart.md
+Invio Codice Smart all’Inquilino
+Messaggio:
+
+“Your personal access code is: [codice].
+It will be active from [data] at [ora].”
+
+📄 07-istruzioni-check-in.md
+Invio Istruzioni Check‑in
+Template utilizzato: check-in-instructions.md dal repository feluca-rooms-templates.
+
+📄 08-reminder-24h.md
+Reminder 24 Ore Prima del Check‑in
+Messaggio:
+
+“Reminder: your check‑in is tomorrow at [ora]. Your access code will activate automatically.”
+
+📄 09-attivazione-codice.md
+Attivazione Codice Smart
+Azioni:
+
+Attivazione automatica tramite API
+
+Registrazione log
+
+Invio messaggio:
+
+“Your access code is now active. You can enter the apartment.”
+
+📄 10-conferma-ingresso.md
+Conferma Avvenuto Ingresso
+Logica:
+Il sistema attende:
+
+messaggio dell’inquilino
+oppure
+
+log accesso dalla centralina
+
+Se nessuna conferma entro 2 ore:
+
+“Did you manage to enter the apartment? Let me know if you need help.”
+
+📄 11-richiesta-foto.md
+Richiesta Foto Stanza
+Messaggio:
+
+“Please send a quick photo of the room so we can confirm everything is in order.”
+
+📄 12-archiviazione.md
+Archiviazione Dati Check‑in
+Azioni:
+
+Salvare foto stanza
+
+Salvare log accesso
+
+Aggiornare cartella stanza/anno
+
+Registrare timestamp check‑in
+
+📄 13-check-in-completato.md
+Chiusura Workflow Check‑in
+Azioni:
+
+Aggiornare record inquilino → “Check‑in completato”
+
+Chiudere workflow
+
+Nessuna azione pendente
+
+📄 diagramma-check-in.md
+Diagramma Logico del Workflow Check‑in Automatizzato
+Codice
+Nuovo inquilino →
+   Verifica contratto →
+      Se NO → reminder firma → STOP
+      Se SÌ →
+         Crea gruppo WhatsApp →
+         Invia messaggi pre‑arrivo →
+         Se accesso smart →
+             Genera codice →
+             Invia codice →
+         Invia istruzioni check‑in →
+         Reminder 24h →
+         Attiva codice →
+         Conferma ingresso →
+         Richiesta foto →
+         Archiviazione →
+         Check‑in completato
