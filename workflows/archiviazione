@@ -1,0 +1,201 @@
+📄 01-trigger.md
+Trigger del Workflow Archiviazione
+Il workflow si attiva quando:
+
+un workflow precedente (check‑in, check‑out, manutenzione, pulizie) invia un “pacchetto dati” da archiviare
+
+oppure viene creato un record “Documento da archiviare”
+
+oppure viene caricata una foto o un file nel sistema
+
+Tipi di documenti gestiti:
+
+Contratti
+
+Foto check‑in
+
+Foto check‑out
+
+Foto manutenzione (prima/dopo)
+
+Foto pulizie (prima/dopo)
+
+Log accessi
+
+Ticket manutenzione
+
+Ticket pulizie
+
+📄 02-creazione-struttura-cartelle.md
+Creazione Struttura Cartelle Stanza/Anno
+Il sistema crea automaticamente la struttura:
+
+Codice
+/Stanza X/
+/Stanza X/2025-2026/
+/Stanza X/2025-2026/Check-in/
+/Stanza X/2025-2026/Check-out/
+/Stanza X/2025-2026/Manutenzione/
+/Stanza X/2025-2026/Pulizie/
+/Stanza X/2025-2026/Contratti/
+La struttura si aggiorna ogni anno accademico.
+
+📄 03-archiviazione-contratti.md
+Archiviazione Contratti
+Azioni:
+
+Salvare contratto firmato in PDF
+
+Rinominare file in formato standard:
+Contratto - [Nome Cognome] - [Stanza] - [Anno].pdf
+
+Archiviare in:
+/Stanza X/2025-2026/Contratti/
+
+📄 04-archiviazione-foto-check-in.md
+Archiviazione Foto Check‑in
+Azioni:
+
+Salvare foto inviate dall’inquilino
+
+Salvare foto scattate dal team
+
+Rinominare file:
+Check-in - [Stanza] - [Data].jpg
+
+Archiviare in:
+/Stanza X/2025-2026/Check-in/
+
+📄 05-archiviazione-foto-check-out.md
+Archiviazione Foto Check‑out
+Azioni:
+
+Salvare foto inviate dall’inquilino
+
+Salvare foto del team pulizie
+
+Rinominare file:
+Check-out - [Stanza] - [Data].jpg
+
+Archiviare in:
+/Stanza X/2025-2026/Check-out/
+
+📄 06-archiviazione-manutenzione.md
+Archiviazione Ticket Manutenzione
+Azioni:
+
+Salvare foto prima/dopo
+
+Salvare descrizione intervento
+
+Salvare log tecnico
+
+Rinominare file:
+Manutenzione - Ticket [ID] - [Data].jpg
+
+Archiviare in:
+/Stanza X/2025-2026/Manutenzione/
+
+📄 07-archiviazione-pulizie.md
+Archiviazione Pulizie
+Azioni:
+
+Salvare foto prima/dopo
+
+Salvare note del team
+
+Rinominare file:
+Pulizie - [Tipo] - [Data].jpg
+
+Archiviare in:
+/Stanza X/2025-2026/Pulizie/
+
+📄 08-archiviazione-log-accessi.md
+Archiviazione Log Accessi Smart
+Azioni:
+
+Salvare log accessi (entrate/uscite)
+
+Rinominare file:
+Log Accessi - [Stanza] - [Mese].csv
+
+Archiviare in:
+/Stanza X/2025-2026/Log Accessi/
+
+📄 09-verifica-completezza.md
+Verifica Completezza Documenti
+Il sistema controlla che ogni stanza abbia:
+
+Foto check‑in
+
+Foto check‑out
+
+Contratto
+
+Ticket manutenzione (se presenti)
+
+Ticket pulizie
+
+Log accessi
+
+Se manca qualcosa → crea un alert interno.
+
+📄 10-generazione-report-stanza.md
+Generazione Report Stanza
+Il sistema genera un report annuale:
+
+Stato stanza
+
+Numero interventi manutenzione
+
+Numero pulizie
+
+Foto principali
+
+Eventuali danni
+
+Storico accessi
+
+Salvato in:
+
+Codice
+/Stanza X/2025-2026/Report/
+📄 11-notifica-completamento.md
+Notifica Completamento Archiviazione
+Messaggio interno:
+
+“Archiviazione completata per Stanza [X], anno [2025-2026].”
+
+📄 12-aggiornamento-dashboard.md
+Aggiornamento Dashboard
+Azioni:
+
+Aggiornare stato stanza
+
+Aggiornare storico interventi
+
+Aggiornare indicatori qualità
+
+📄 13-archiviazione-completata.md
+Chiusura Workflow
+Azioni:
+
+Workflow → “Completato”
+
+Nessuna azione pendente
+
+📄 diagramma-archiviazione.md
+Diagramma Logico Workflow Archiviazione
+Codice
+Trigger →
+   Creazione struttura cartelle →
+   Archiviazione contratti →
+   Archiviazione foto check-in →
+   Archiviazione foto check-out →
+   Archiviazione manutenzione →
+   Archiviazione pulizie →
+   Archiviazione log accessi →
+   Verifica completezza →
+   Generazione report →
+   Aggiornamento dashboard →
+   Archiviazione completata
