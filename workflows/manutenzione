@@ -1,0 +1,166 @@
+📄 01-trigger.md
+Trigger del Workflow Manutenzione
+Il workflow si attiva quando:
+
+l’inquilino invia un messaggio nel gruppo WhatsApp con foto/video
+
+oppure viene compilato un form “Segnalazione problema”
+
+oppure viene creato un record “Manutenzione” nel database
+
+Campi richiesti:
+
+Nome inquilino
+
+Stanza
+
+Descrizione problema
+
+Foto/video
+
+Data segnalazione
+
+📄 02-classificazione-problema.md
+Classificazione Automatica del Problema
+Il sistema analizza la segnalazione e la classifica in:
+
+Alta priorità — perdite d’acqua, blackout, gas, serrature
+
+Media priorità — elettrodomestici, mobili rotti, prese non funzionanti
+
+Bassa priorità — lampadine, estetica, piccoli difetti
+
+Output: campo “priorità” aggiornato.
+
+📄 03-assegnazione-tecnico.md
+Assegnazione Tecnico
+In base alla priorità e al tipo di problema:
+
+Idrico → Tecnico A
+
+Elettrico → Tecnico B
+
+Serrature → Tecnico C
+
+Generico → Tecnico D
+
+Messaggio interno:
+
+“Nuovo ticket manutenzione assegnato a [Tecnico]. Priorità: [Alta/Media/Bassa].”
+
+📄 04-creazione-ticket.md
+Creazione Ticket Manutenzione
+Azioni:
+
+Creare ticket nel database
+
+Allegare foto/video
+
+Allegare descrizione
+
+Allegare priorità
+
+Allegare assegnazione tecnico
+
+Output: ID ticket.
+
+📄 05-messaggio-conferma-inquilino.md
+Messaggio di Conferma all’Inquilino
+“Thanks for your report! I’ve opened a maintenance ticket and assigned a technician. I’ll keep you updated.”
+
+📄 06-reminder-tecnico.md
+Reminder al Tecnico
+Logica:
+
+Se nessuna risposta entro 4 ore → reminder
+
+Se priorità alta → reminder ogni 1 ora
+
+Messaggio interno:
+
+“Reminder: ticket [ID] in attesa di intervento.”
+
+📄 07-programmazione-intervento.md
+Programmazione Intervento
+Il tecnico comunica:
+
+data
+
+ora
+
+necessità di accesso
+
+eventuali materiali
+
+Il sistema aggiorna il ticket.
+
+📄 08-notifica-inquilino-intervento.md
+Notifica all’Inquilino
+“The technician will come on [date] at [time]. Please make sure the room is accessible.”
+
+📄 09-intervento-completato.md
+Chiusura Intervento da Parte del Tecnico
+Il tecnico invia:
+
+foto dopo intervento
+
+descrizione lavoro
+
+stato finale
+
+Il sistema aggiorna il ticket → “Completato”.
+
+📄 10-verifica-qualità.md
+Verifica Qualità Interna
+Azioni:
+
+Confronto foto prima/dopo
+
+Verifica risoluzione problema
+
+Aggiornamento stato stanza
+
+📄 11-feedback-inquilino.md
+Richiesta Feedback all’Inquilino
+“Your maintenance request has been completed. Please let me know if everything is working correctly.”
+
+📄 12-archiviazione.md
+Archiviazione Ticket
+Azioni:
+
+Salvare foto prima/dopo
+
+Salvare log intervento
+
+Salvare comunicazioni
+
+Archiviare nella cartella stanza/anno:
+
+Codice
+Stanza X / 2025-2026 / Manutenzione / Ticket-ID
+📄 13-ticket-completato.md
+Chiusura Workflow
+Azioni:
+
+Ticket → “Chiuso”
+
+Nessuna azione pendente
+
+Workflow terminato
+
+📄 diagramma-manutenzione.md
+Diagramma Logico Workflow Manutenzione
+Codice
+Segnalazione →
+   Classificazione →
+   Assegnazione tecnico →
+   Creazione ticket →
+   Conferma inquilino →
+   Reminder tecnico →
+   Programmazione intervento →
+   Notifica inquilino →
+   Intervento →
+   Verifica qualità →
+   Feedback →
+   Archiviazione →
+   Ticket completato
