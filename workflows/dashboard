@@ -1,0 +1,234 @@
+📄 01-obiettivo-dashboard.md
+Obiettivo della Dashboard
+La dashboard serve a:
+
+mostrare lo stato di ogni stanza
+
+evidenziare attività imminenti (check‑in, check‑out)
+
+mostrare ticket manutenzione aperti
+
+mostrare pulizie in corso
+
+mostrare anomalie accessi
+
+fornire indicatori di performance
+
+diventare la “control room” del sistema Feluca Rooms
+
+📄 02-fonti-dati.md
+Fonti Dati della Dashboard
+La dashboard raccoglie dati da:
+
+Workflow Check‑in
+
+Workflow Check‑out
+
+Workflow Manutenzione
+
+Workflow Pulizie
+
+Workflow Sicurezza Accessi
+
+Workflow Archiviazione
+
+Ogni workflow invia aggiornamenti tramite webhook o record database.
+
+📄 03-struttura-dashboard.md
+Struttura della Dashboard
+La dashboard è divisa in 6 sezioni principali:
+
+Stato Stanze
+
+Attività Imminenti
+
+Manutenzione Aperta
+
+Pulizie in Corso
+
+Anomalie Accessi
+
+Indicatori Annuali
+
+📄 04-stato-stanze.md
+Stato Stanze
+Ogni stanza mostra:
+
+Stato attuale (Disponibile / Occupata / In pulizia / In manutenzione)
+
+Nome inquilino
+
+Data check‑in
+
+Data check‑out
+
+Ultima pulizia
+
+Ultima manutenzione
+
+Ultimo accesso registrato
+
+📄 05-attività-imminenti.md
+Attività Imminenti
+La dashboard mostra:
+
+Check‑in nelle prossime 48 ore
+
+Check‑out nelle prossime 48 ore
+
+Pulizie programmate
+
+Interventi manutenzione programmati
+
+Ogni voce include:
+
+Stanza
+
+Data/ora
+
+Responsabile (pulizie/tecnico)
+
+Stato (confermato / in attesa / completato)
+
+📄 06-manutenzione-aperta.md
+Ticket Manutenzione Aperti
+Per ogni ticket:
+
+ID ticket
+
+Stanza
+
+Priorità (Alta / Media / Bassa)
+
+Tecnico assegnato
+
+Data segnalazione
+
+Stato intervento
+
+Foto disponibili
+
+📄 07-pulizie-in-corso.md
+Pulizie in Corso
+Per ogni intervento:
+
+Stanza
+
+Team pulizie
+
+Tipo pulizia (post check‑out / straordinaria / semestrale)
+
+Foto prima/dopo (se già inviate)
+
+Stato (in corso / completato)
+
+📄 08-anomalie-accessi.md
+Anomalie Accessi
+La dashboard mostra:
+
+Tentativi falliti
+
+Accessi fuori orario
+
+Codici scaduti usati
+
+Accessi non autorizzati
+
+Codici rigenerati
+
+Ogni anomalia include:
+
+Stanza
+
+Data/ora
+
+Tipo anomalia
+
+Azione richiesta
+
+📄 09-indicatori-annuali.md
+Indicatori Annuali
+Indicatori per ogni stanza:
+
+Numero check‑in
+
+Numero check‑out
+
+Numero interventi manutenzione
+
+Numero pulizie
+
+Giorni di occupazione
+
+Giorni di disponibilità
+
+Tasso di turnover
+
+Costo manutenzione annuale (se tracciato)
+
+📄 10-aggiornamento-automatico.md
+Aggiornamento Automatico della Dashboard
+La dashboard si aggiorna quando:
+
+un workflow cambia stato
+
+un ticket viene creato o chiuso
+
+una pulizia viene completata
+
+un accesso viene registrato
+
+un’anomalia viene rilevata
+
+Aggiornamento in tempo reale o ogni 5 minuti.
+
+📄 11-notifiche-dashboard.md
+Notifiche Automatiche
+La dashboard invia notifiche interne quando:
+
+una stanza passa a “In manutenzione”
+
+una stanza passa a “In pulizia”
+
+un check‑in è imminente
+
+un check‑out è imminente
+
+viene rilevata un’anomalia accessi
+
+📄 12-esportazione-report.md
+Esportazione Report
+La dashboard permette di esportare:
+
+Report mensile
+
+Report annuale
+
+Report manutenzione
+
+Report pulizie
+
+Report accessi
+
+📄 13-dashboard-completata.md
+Chiusura Workflow Dashboard
+Azioni:
+
+Dashboard aggiornata
+
+Nessuna azione pendente
+
+Sistema operativo completo
+
+📄 diagramma-dashboard.md
+Diagramma Logico Dashboard
+Codice
+Dati da workflow →
+   Stato stanze →
+   Attività imminenti →
+   Manutenzione aperta →
+   Pulizie in corso →
+   Anomalie accessi →
+   Indicatori annuali →
+   Notifiche →
+   Dashboard aggiornata
