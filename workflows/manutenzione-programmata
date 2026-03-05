@@ -1,0 +1,245 @@
+📄 01-obiettivo.md
+Obiettivo del Workflow
+La manutenzione programmata serve a:
+
+prevenire guasti
+
+ridurre costi straordinari
+
+mantenere gli immobili in condizioni eccellenti
+
+garantire sicurezza e conformità
+
+evitare emergenze durante il soggiorno degli inquilini
+
+📄 02-trigger.md
+Trigger del Workflow
+Il workflow si attiva quando:
+
+arriva la data programmata per un intervento annuale
+
+arriva la data programmata per un intervento semestrale
+
+un sensore o un tecnico segnala un valore fuori norma
+
+un controllo qualità richiede manutenzione preventiva
+
+📄 03-calendario-interventi.md
+Calendario Interventi Programmati
+Ogni anno vengono programmati:
+
+Caldaie → Ottobre
+
+Climatizzatori → Aprile
+
+Elettrodomestici → Gennaio
+
+Serrature e Smart Lock → Febbraio
+
+Impianto elettrico → Marzo
+
+Impianto idraulico → Maggio
+
+Controllo muffa/umidità → Novembre
+
+Controllo finestre e infissi → Dicembre
+
+📄 04-creazione-task.md
+Creazione Task Manutenzione Programmata
+Per ogni intervento:
+
+creare task
+
+assegnare tecnico
+
+allegare checklist specifica
+
+impostare scadenza
+
+impostare reminder automatici
+
+📄 05-checklist-caldaia.md
+Checklist Caldaia
+Verifica pressione
+
+Verifica combustione
+
+Pulizia camera
+
+Controllo perdite
+
+Controllo scarico fumi
+
+Test funzionamento
+
+Esito: OK / Da riparare / Sostituzione consigliata
+
+📄 06-checklist-climatizzatore.md
+Checklist Climatizzatore
+Pulizia filtri
+
+Pulizia unità interna
+
+Pulizia unità esterna
+
+Controllo gas refrigerante
+
+Test raffreddamento
+
+Test riscaldamento
+
+📄 07-checklist-elettrodomestici.md
+Checklist Elettrodomestici
+Per ogni elettrodomestico:
+
+Test funzionamento
+
+Controllo cavi
+
+Controllo perdite (lavatrice/lavastoviglie)
+
+Rumori anomali
+
+Pulizia filtri
+
+📄 08-checklist-serrature.md
+Checklist Serrature e Smart Lock
+Test apertura/chiusura
+
+Test batteria
+
+Test codici
+
+Controllo allineamento porta
+
+Lubrificazione meccanismi
+
+📄 09-checklist-elettrico.md
+Checklist Impianto Elettrico
+Test prese
+
+Test interruttori
+
+Test salvavita
+
+Test differenziale
+
+Controllo quadretto elettrico
+
+📄 10-checklist-idraulico.md
+Checklist Impianto Idraulico
+Controllo perdite
+
+Controllo pressione
+
+Controllo scarichi
+
+Controllo rubinetteria
+
+Controllo sifoni
+
+📄 11-checklist-umidita.md
+Checklist Muffa e Umidità
+Controllo pareti
+
+Controllo soffitti
+
+Controllo odori
+
+Controllo condensa finestre
+
+Foto documentazione
+
+📄 12-esecuzione-intervento.md
+Esecuzione Intervento
+Il tecnico:
+
+completa checklist
+
+scatta foto
+
+segnala difetti
+
+indica materiali utilizzati
+
+aggiorna stato intervento
+
+📄 13-creazione-ticket-correttivi.md
+Creazione Ticket Correttivi
+Se durante la manutenzione programmata emergono problemi:
+
+creare ticket manutenzione
+
+allegare foto
+
+classificare priorità
+
+assegnare tecnico dedicato
+
+📄 14-aggiornamento-stato-stanza.md
+Aggiornamento Stato Stanza
+Durante l’intervento:
+
+“In manutenzione programmata”
+
+Dopo l’intervento:
+
+“Disponibile”
+
+oppure “In manutenzione correttiva” se sono stati creati ticket
+
+📄 15-archiviazione.md
+Archiviazione Documenti
+Il sistema salva:
+
+checklist compilate
+
+foto
+
+note tecniche
+
+ticket correttivi
+
+certificazioni (se previste)
+
+In:
+
+Codice
+/Stanza X/2025-2026/Manutenzione Programmata/
+📄 16-report-annuale.md
+Report Annuale Manutenzione Programmata
+Contiene:
+
+interventi completati
+
+interventi mancati
+
+difetti rilevati
+
+costi stimati
+
+trend rispetto all’anno precedente
+
+📄 17-manutenzione-programmata-completata.md
+Chiusura Workflow
+interventi completati
+
+report generato
+
+archiviazione effettuata
+
+nessuna azione pendente
+
+📄 diagramma-manutenzione-programmata.md
+Diagramma Logico
+Codice
+Trigger →
+   Calendario interventi →
+   Creazione task →
+   Checklist →
+   Esecuzione intervento →
+   Ticket correttivi (se necessari) →
+   Aggiornamento stato stanza →
+   Archiviazione →
+   Report annuale →
+   Manutenzione programmata completata
